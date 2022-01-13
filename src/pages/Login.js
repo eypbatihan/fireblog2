@@ -13,11 +13,13 @@ import { useNavigate } from "react-router-dom";
 
 import { getAuth, signInWithPopup } from "firebase/auth";
 import { successNote } from "../helpers/toastNotify";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const provider = new GoogleAuthProvider();
 
   const handleSubmit = async () => {
     try {
@@ -32,6 +34,10 @@ const Login = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        const user = result.user;
         navigate("/");
         successNote("Successfully Login ");
       })
