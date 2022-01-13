@@ -6,6 +6,7 @@ import blok from "../assests/blok.png";
 import Typography from "@mui/material/Typography";
 import { Paper, Stack, Link } from "@mui/material";
 import GoogleButton from "react-google-button";
+import { GoogleAuthProvider } from "firebase/auth";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, provider } from "../helpers/firebase";
@@ -18,6 +19,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const provider = new GoogleAuthProvider();
 
   const handleSubmit = async () => {
     try {
@@ -32,6 +34,10 @@ const Login = () => {
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        const user = result.user;
         navigate("/");
         successNote("Successfully Login ");
       })
