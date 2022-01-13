@@ -19,7 +19,6 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const provider = new GoogleAuthProvider();
 
   const handleSubmit = async () => {
     try {
@@ -31,13 +30,10 @@ const Login = () => {
     }
   };
   const login = () => {
+    const provider = new GoogleAuthProvider();
     const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-
-        const user = result.user;
         navigate("/");
         successNote("Successfully Login ");
       })
