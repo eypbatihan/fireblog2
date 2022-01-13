@@ -8,12 +8,11 @@ import { Paper, Stack, Link } from "@mui/material";
 import GoogleButton from "react-google-button";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, provider } from "../helpers/firebase";
+import { auth } from "../helpers/firebase";
 import { useNavigate } from "react-router-dom";
 
-import { getAuth, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { successNote } from "../helpers/toastNotify";
-import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ const Login = () => {
   };
   const login = () => {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
         navigate("/");
