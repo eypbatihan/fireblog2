@@ -30,6 +30,7 @@ const Login = () => {
   };
   const login = () => {
     const provider = new GoogleAuthProvider();
+    const auth = getAuth();
     signInWithPopup(auth, provider)
       .then((result) => {
         navigate("/");
