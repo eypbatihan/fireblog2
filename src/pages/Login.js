@@ -112,7 +112,7 @@ const Login = () => {
                 ":hover": { bgcolor: "#D5D5D5", color: "#046582" },
               }}
               variant="contained"
-              onClick={handleSubmit}
+              onClick={login}
             >
               LOGİN
             </Button>
