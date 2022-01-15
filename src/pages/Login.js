@@ -34,7 +34,6 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-
         navigate("/");
         successNote("Successfully Login ");
       })

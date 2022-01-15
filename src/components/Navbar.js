@@ -14,9 +14,12 @@ import { signOut } from "firebase/auth";
 import { auth } from "../helpers/firebase";
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material";
+import { purple } from "@mui/material/colors";
+import { display } from "@mui/system";
 
 export default function MenuAppBar() {
-  const { currentUser } = React.useContext(AuthContext);
+  const { currentUser, user } = React.useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
 
@@ -40,6 +43,7 @@ export default function MenuAppBar() {
           <Link href="/">
             <img style={{ width: "45px" }} src={cw} alt="cw image" />
           </Link>
+
           <Typography
             style={{
               fontFamily: "Girassol",
@@ -63,7 +67,19 @@ export default function MenuAppBar() {
               onClick={handleMenu}
               color="inherit"
             >
-              <AccountCircle />
+              {currentUser ? (
+                <Avatar
+                  sx={{
+                    bgcolor: "#C45487",
+                    width: "25px",
+                    height: "25px",
+                  }}
+                >
+                  {user.slice(0, 1)}
+                </Avatar>
+              ) : (
+                <AccountCircle />
+              )}
             </IconButton>
             <Menu
               id="menu-appbar"

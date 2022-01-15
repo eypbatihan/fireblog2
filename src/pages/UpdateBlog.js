@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Avatar from "@mui/material/Avatar";
-import blok from "../assests/blok.png";
 import Typography from "@mui/material/Typography";
 import { Stack, Paper, CardMedia } from "@mui/material";
 
