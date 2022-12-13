@@ -1,2 +1,2 @@
 # Project : fireblog
-https://eypbatihan-fire-app-blog.netlify.app/
+https://eypbatihan-fireblog-app.netlify.app/
